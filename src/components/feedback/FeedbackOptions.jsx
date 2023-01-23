@@ -9,7 +9,11 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
         type="button"
         name={option}
         key={option}
-        onClick={onLeaveFeedback}
+        onClick={e => {
+          e.preventDefault();
+          const value = e.target.name;
+          return onLeaveFeedback(value);
+        }}
       >
         {option}
       </button>

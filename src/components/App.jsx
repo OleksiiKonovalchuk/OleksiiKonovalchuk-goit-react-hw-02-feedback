@@ -10,9 +10,7 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  feedbackInput = e => {
-    e.preventDefault();
-    const value = e.target.name;
+  feedbackInput = value => {
     return this.setState({ [value]: this.state[value] + 1 });
   };
   countTotalFeedback = () => {
@@ -30,13 +28,13 @@ class App extends Component {
     const states = Object.keys(this.state);
     return (
       <div className={css.App}>
-        <Section title={'Please leave feedback'}>
+        <Section title="Please leave feedback">
           <FeedbackOptions
             options={states}
             onLeaveFeedback={this.feedbackInput}
           />
         </Section>
-        <Section title={'Statistics'}>
+        <Section title="Statistics">
           {this.countTotalFeedback() === 0 ? (
             <Notification message="There is no feedback"></Notification>
           ) : (
